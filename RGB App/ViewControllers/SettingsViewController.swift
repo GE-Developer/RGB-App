@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  RGB App
 //
 //  Created by Mikhail Bukhrashvili on 26.03.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     // MARK: - IB Outlets
     
@@ -20,10 +20,12 @@ class ViewController: UIViewController {
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
+    @IBOutlet var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        doneButton.layer.cornerRadius = 15
         colorView.layer.cornerRadius = 15
         
         redSlider.minimumTrackTintColor = .red
@@ -44,7 +46,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Цвет вью
+    // Цвет view
     private func setColor() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
