@@ -33,7 +33,8 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         doneButton.layer.cornerRadius = 15
         colorView.layer.cornerRadius = 15
-    
+        setValueForSlider()
+        
         setColor()
         setValue(for: redValueLabel, greenValueLabel, blueValueLabel)
         
@@ -43,7 +44,6 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - IB Actions
-    // Изменение цветов слайдерами
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
@@ -60,8 +60,29 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func redTFTyped() {
+        redValueLabel.text = redTF.text
+        redSlider.value = Float(redTF.text ?? "0.0") ?? 0.0
+        setColor()
+    }
+    
+    @IBAction func greenTFTyped() {
+        greenValueLabel.text = greenTF.text
+        greenSlider.value = Float(greenTF.text ?? "0.0") ?? 0.0
+        setColor()
+    }
+    
+    @IBAction func blueTFTyped() {
+        blueValueLabel.text = blueTF.text
+        blueSlider.value = Float(blueTF.text ?? "0.0") ?? 0.0
+        setColor()
+    }
+    
+    @IBAction func doneButtonPressed() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Private Methods
-    // Цвет view
     private func setColor() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -84,8 +105,21 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    // Значения RGB
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
+    }
+    
+    
+    private func setValueForSlider() {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        redSlider.value = Float(r)
+        greenSlider.value = Float(g)
+        blueSlider.value = Float(b)
     }
 }
