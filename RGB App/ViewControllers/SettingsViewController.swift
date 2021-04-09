@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
     
     // MARK: Public Properties
     var color: UIColor!
+    var delegate: SettingsViewControllerDelegate!
     
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -79,6 +80,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
+        delegate.setBackgroundColor(red: CGFloat(redSlider.value),
+                                    green: CGFloat(greenSlider.value),
+                                    blue: CGFloat(blueSlider.value))
         dismiss(animated: true)
     }
     
