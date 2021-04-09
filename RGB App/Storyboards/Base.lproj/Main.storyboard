@@ -163,7 +163,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
-                                                    <action selector="redTFTyped" destination="BYZ-38-t0r" eventType="editingDidEnd" id="wWz-Z3-RZD"/>
+                                                    <action selector="rgbTF:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="r1k-OU-cQO"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.35" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VpS-n9-B8P">
@@ -172,7 +172,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
-                                                    <action selector="greenTFTyped" destination="BYZ-38-t0r" eventType="editingDidEnd" id="IY3-1w-Sir"/>
+                                                    <action selector="rgbTF:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0Sd-hL-Ljh"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.44" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSV-Lf-vYb">
@@ -181,7 +181,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
-                                                    <action selector="blueTFTyped" destination="BYZ-38-t0r" eventType="editingDidEnd" id="sqC-JU-we0"/>
+                                                    <action selector="rgbTF:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Zjq-lU-Icl"/>
                                                 </connections>
                                             </textField>
                                         </subviews>

@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
     // MARK: - IB Outlets
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var colorView: UIView!
@@ -34,14 +34,11 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         doneButton.layer.cornerRadius = 15
         colorView.layer.cornerRadius = 15
-        setValueForSlider()
         
+        setValueForSlider()
         setColor()
         setValue(for: redValueLabel, greenValueLabel, blueValueLabel)
-        
-        redTF.text = redValueLabel.text
-        greenTF.text = greenValueLabel.text
-        blueTF.text = blueValueLabel.text
+        setValue(for: redTF, greenTF, blueTF)
     }
     
     // MARK: - IB Actions
@@ -51,31 +48,40 @@ class SettingsViewController: UIViewController {
         switch sender {
         case redSlider:
             setValue(for: redValueLabel)
-            redTF.text = redValueLabel.text
+            setValue(for: redTF)
         case greenSlider:
             setValue(for: greenValueLabel)
-            greenTF.text = greenValueLabel.text
+            setValue(for: greenTF)
         default:
             setValue(for: blueValueLabel)
-            blueTF.text = blueValueLabel.text
+            setValue(for: blueTF)
         }
     }
     
-    @IBAction func redTFTyped() {
-        redValueLabel.text = redTF.text
-        redSlider.value = Float(redTF.text ?? "0.0") ?? 0.0
-        setColor()
-    }
-    
-    @IBAction func greenTFTyped() {
-        greenValueLabel.text = greenTF.text
-        greenSlider.value = Float(greenTF.text ?? "0.0") ?? 0.0
-        setColor()
-    }
-    
-    @IBAction func blueTFTyped() {
-        blueValueLabel.text = blueTF.text
-        blueSlider.value = Float(blueTF.text ?? "0.0") ?? 0.0
+    @IBAction func rgbTF(_ sender: UITextField) {
+        switch sender {
+        case redTF:
+            redSlider.value = Float(redTF.text ?? "") ?? 0
+            setValue(for: redValueLabel)
+            
+            if redSlider.value == 0 {
+                redTF.text = "0.00"
+            }
+        case greenTF:
+            greenSlider.value = Float(greenTF.text ?? "") ?? 0
+            setValue(for: greenValueLabel)
+            
+            if greenSlider.value == 0 {
+                greenTF.text = "0.00"
+            }
+        default:
+            blueSlider.value = Float(blueTF.text ?? "") ?? 0
+            setValue(for: blueValueLabel)
+            
+            if blueSlider.value == 0 {
+                blueTF.text = "0.00"
+            }
+        }
         setColor()
     }
     
@@ -95,7 +101,7 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
-
+    
     private func setValue(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
@@ -108,11 +114,25 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-
+    
+    private func setValue(for textFields: UITextField...) {
+        textFields.forEach { textField in
+            switch textField {
+            case redTF:
+                textField.text = string(from: redSlider)
+            case greenTF:
+                textField.text = string(from: greenSlider)
+            default:
+                textField.text = string(from: blueSlider)
+            }
+        }
+    }
+}
+    
+extension SettingsViewController {
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
-    
     
     private func setValueForSlider() {
         var r: CGFloat = 0
