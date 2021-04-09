@@ -10,7 +10,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     // MARK: - IB Outlets
-    
+    @IBOutlet var doneButton: UIButton!
     @IBOutlet var colorView: UIView!
     
     @IBOutlet var redValueLabel: UILabel!
@@ -20,32 +20,47 @@ class SettingsViewController: UIViewController {
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
-    @IBOutlet var doneButton: UIButton!
     
+    @IBOutlet var redTF: UITextField!
+    @IBOutlet var greenTF: UITextField!
+    @IBOutlet var blueTF: UITextField!
+    
+    // MARK: Public Properties
+    var color: UIColor!
+    
+    // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         doneButton.layer.cornerRadius = 15
         colorView.layer.cornerRadius = 15
-        
-        redSlider.minimumTrackTintColor = .red
-        greenSlider.minimumTrackTintColor = .green
-        
+    
         setColor()
         setValue(for: redValueLabel, greenValueLabel, blueValueLabel)
+        
+        redTF.text = redValueLabel.text
+        greenTF.text = greenValueLabel.text
+        blueTF.text = blueValueLabel.text
     }
     
+    // MARK: - IB Actions
     // Изменение цветов слайдерами
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
-                
+        
         switch sender {
-        case redSlider: setValue(for: redValueLabel)
-        case greenSlider: setValue(for: greenValueLabel)
-        default: setValue(for: blueValueLabel)
+        case redSlider:
+            setValue(for: redValueLabel)
+            redTF.text = redValueLabel.text
+        case greenSlider:
+            setValue(for: greenValueLabel)
+            greenTF.text = greenValueLabel.text
+        default:
+            setValue(for: blueValueLabel)
+            blueTF.text = blueValueLabel.text
         }
     }
     
+    // MARK: - Private Methods
     // Цвет view
     private func setColor() {
         colorView.backgroundColor = UIColor(
@@ -55,7 +70,7 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
-    
+
     private func setValue(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
@@ -68,7 +83,7 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-    
+
     // Значения RGB
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)

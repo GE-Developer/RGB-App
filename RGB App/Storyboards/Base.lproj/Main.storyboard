@@ -26,15 +26,15 @@
             </objects>
             <point key="canvasLocation" x="-1457" y="91"/>
         </scene>
-        <!--View Controller-->
+        <!--Color View Controller-->
         <scene sceneID="3sz-1G-YWl">
             <objects>
-                <viewController id="LVQ-7M-lIe" sceneMemberID="viewController">
+                <viewController id="LVQ-7M-lIe" customClass="ColorViewController" customModule="RGB_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="63r-ZZ-dsx">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NhQ-Eg-BDC"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="c91-kq-XPA">
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="0P0-eu-oDX">
@@ -68,25 +68,31 @@
                                 <rect key="frame" x="20" y="314" width="388" height="166"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="25i-ja-9fR">
-                                        <rect key="frame" x="0.0" y="6.6666666666666856" width="40.666666666666664" height="153"/>
+                                        <rect key="frame" x="0.0" y="5" width="40.666666666666664" height="156"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RED" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uou-Si-gHv">
-                                                <rect key="frame" x="8.3333333333333321" y="0.0" width="23.999999999999996" height="14.333333333333334"/>
+                                                <rect key="frame" x="7.6666666666666679" y="0.0" width="25.000000000000004" height="15.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="-1" height="1"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GREEN" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-6w-J3w">
-                                                <rect key="frame" x="0.0" y="69.333333333333314" width="40.333333333333336" height="14.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="70.333333333333314" width="40.666666666666664" height="15.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemGreenColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="-1" height="1"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-ms-zTw">
-                                                <rect key="frame" x="5.0000000000000018" y="138.66666666666663" width="30.666666666666671" height="14.333333333333343"/>
+                                                <rect key="frame" x="4.3333333333333304" y="140.66666666666669" width="31.666666666666671" height="15.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" systemColor="systemBlueColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="-1" height="1"/>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -205,12 +211,15 @@
                     <navigationItem key="navigationItem" id="Qb7-cY-Djp"/>
                     <connections>
                         <outlet property="blueSlider" destination="smG-sJ-LGa" id="3im-A6-DaU"/>
+                        <outlet property="blueTF" destination="tSV-Lf-vYb" id="qsP-lB-A4N"/>
                         <outlet property="blueValueLabel" destination="VEr-aZ-pl6" id="L5U-eb-GOV"/>
                         <outlet property="colorView" destination="4fj-QR-Wv5" id="1Eb-gK-Mhx"/>
                         <outlet property="doneButton" destination="EuQ-OP-rue" id="TJ4-Zy-NFo"/>
                         <outlet property="greenSlider" destination="6UM-Vf-u7M" id="ijw-On-GjS"/>
+                        <outlet property="greenTF" destination="VpS-n9-B8P" id="D3S-vB-tOF"/>
                         <outlet property="greenValueLabel" destination="CLA-pm-1jM" id="8zR-wO-h7F"/>
                         <outlet property="redSlider" destination="pqa-nQ-1kB" id="FyB-qu-GEW"/>
+                        <outlet property="redTF" destination="6Nl-qa-1Tk" id="FcX-9a-s81"/>
                         <outlet property="redValueLabel" destination="yWT-Sh-4C3" id="s8l-0l-jaL"/>
                     </connections>
                 </viewController>
