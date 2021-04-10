@@ -39,6 +39,12 @@ class SettingsViewController: UIViewController {
         setColor()
         setValue(for: redValueLabel, greenValueLabel, blueValueLabel)
         setValue(for: redTF, greenTF, blueTF)
+        setUpToolBarButton()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     // MARK: - IB Actions
@@ -63,24 +69,19 @@ class SettingsViewController: UIViewController {
         case redTF:
             redSlider.value = Float(redTF.text ?? "") ?? 0
             setValue(for: redValueLabel)
+            correctMinMaxValueForTF(textField: redTF, slider: redSlider)
             
-            if redSlider.value == 0 {
-                redTF.text = "0.00"
-            }
+            
         case greenTF:
             greenSlider.value = Float(greenTF.text ?? "") ?? 0
             setValue(for: greenValueLabel)
+            correctMinMaxValueForTF(textField: greenTF, slider: greenSlider)
             
-            if greenSlider.value == 0 {
-                greenTF.text = "0.00"
-            }
         default:
             blueSlider.value = Float(blueTF.text ?? "") ?? 0
             setValue(for: blueValueLabel)
+            correctMinMaxValueForTF(textField: blueTF, slider: blueSlider)
             
-            if blueSlider.value == 0 {
-                blueTF.text = "0.00"
-            }
         }
         setColor()
     }
@@ -129,6 +130,7 @@ class SettingsViewController: UIViewController {
     }
 }
     
+// MARK: - Other Private Methods
 extension SettingsViewController {
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
@@ -145,5 +147,27 @@ extension SettingsViewController {
         redSlider.value = Float(r)
         greenSlider.value = Float(g)
         blueSlider.value = Float(b)
+    }
+    
+    private func correctMinMaxValueForTF(textField: UITextField, slider: UISlider) {
+        if slider.value == 0 {
+            textField.text = "0.00"
+        } else if slider.value == 1 {
+            textField.text = "1.00"
+        }
+    }
+    
+    private func setUpToolBarButton() {
+        let bar = UIToolbar()
+        let done = UIBarButtonItem(title: "Done",
+                                   style: .plain,
+                                   target: self,
+                                   action: .none) // так и не понял, как задействовать кнопку
+        bar.items = [done]
+        bar.sizeToFit()
+        
+        redTF.inputAccessoryView = bar
+        greenTF.inputAccessoryView = bar
+        blueTF.inputAccessoryView = bar
     }
 }

@@ -58,9 +58,9 @@
 		EE44070F260D377800C9FC12 /* RGB App */ = {
 			isa = PBXGroup;
 			children = (
-				EEF23289261FA93F005D1855 /* Supports */,
 				EEF23287261FA919005D1855 /* ViewControllers */,
 				EEF23286261FA8D1005D1855 /* Storyboards */,
+				EEF23289261FA93F005D1855 /* Supports */,
 				EEF23288261FA92D005D1855 /* Resources */,
 			);
 			path = "RGB App";
